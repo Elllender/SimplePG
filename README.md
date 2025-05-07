@@ -2,7 +2,7 @@
 
 SimplePG - Simple and convenient password generator using a cryptographically strong random number generator.
 
-<img src="https://i.ibb.co/8gxqMwJn/screenshot.png"></img>
+<img src="https://i.ibb.co/HTSkB2P2/image.png"></img>
 
 # Versions used
 <table border=0 align='left' style='text-align: center;' cellspacing="0", cellpadding="5">
