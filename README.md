@@ -1,6 +1,6 @@
 # About program
 
-CSPG - (
+SimplePG - Simple and convenient password generator using a cryptographically strong random number generator.
 
 <img src="screenshot.png"></img>
 
