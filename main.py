@@ -3,8 +3,6 @@ from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import showinfo
-from tkinter.scrolledtext import ScrolledText
-from tkinter import TkVersion
 from pyperclip import copy
 
 lowercase = list(ascii_lowercase)
