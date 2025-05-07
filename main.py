@@ -4,11 +4,8 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import showinfo
 from tkinter.scrolledtext import ScrolledText
+from tkinter import TkVersion
 from pyperclip import copy
-
-'''
-Максимальная длина пароля 16 символов
-'''
 
 lowercase = list(ascii_lowercase)
 uppercase = list(ascii_uppercase)
