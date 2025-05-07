@@ -105,9 +105,8 @@ root = Tk()
 
 root.title('CSPG')
 root.geometry("495x250")
-#root.config(bg='black')
 
-cpass = StringVar(value="**click on the generate button**") # generatepassword(length=32)
+cpass = StringVar(value="**click on the generate button**")
 length_var = IntVar()
 
 style = ttk.Style()
@@ -129,7 +128,7 @@ for c in range(1): frame0.grid_rowconfigure(index=c, weight=1)
 # frame 0
 
 # frame 1
-frame1 = ttk.Frame(root, borderwidth=2, relief='groove') #flat, groove, raised, ridge, solid, or sunken
+frame1 = ttk.Frame(root, borderwidth=2, relief='groove')
 frame1.grid(column=0, row=1, sticky=NSEW, pady=3, padx=[6, 3])
 
 for c in range(2): frame1.grid_columnconfigure(index=c, weight=1)
@@ -137,7 +136,7 @@ for c in range(2): frame1.grid_rowconfigure(index=c, weight=1)
 # frame 1
 
 # frame 2
-frame2 = ttk.Frame(root, borderwidth=2, relief='groove') #flat, groove, raised, ridge, solid, or sunken
+frame2 = ttk.Frame(root, borderwidth=2, relief='groove')
 frame2.grid(column=0, row=2, sticky=NSEW, pady=[3, 6], padx=6, columnspan=2)
 
 for c in range(2): frame2.grid_columnconfigure(index=c, weight=1)
@@ -145,7 +144,7 @@ for c in range(4): frame2.grid_rowconfigure(index=c, weight=1)
 # frame 2
 
 # frame 3
-frame3 = ttk.Frame(root, borderwidth=2, relief='groove') #flat, groove, raised, ridge, solid, or sunken
+frame3 = ttk.Frame(root, borderwidth=2, relief='groove')
 frame3.grid(column=1, row=1, sticky=NSEW, pady=3, padx=[3, 6])
 
 for c in range(1): frame3.grid_columnconfigure(index=c, weight=1)
@@ -160,7 +159,6 @@ checkbutton_visible = ttk.Checkbutton(frame0, style='M.TCheckbutton', variable=c
 checkbutton_visible.grid(column=0, row=0, padx=8, sticky=W)
 
 labelpass_invisible = ttk.Label(frame0, text="•"*16, font=('Verdana', 11, 'normal'), background='Gainsboro')
-#labelpass_invisible.grid(column=1, row=0, sticky=W)
 
 labelpass_visible = ttk.Label(frame0, textvariable=cpass, font=('Verdana', 11, 'normal'), background='Gainsboro')
 labelpass_visible.grid(column=1, row=0, sticky=W)
