@@ -86,12 +86,28 @@ def checkbutton_special():
         entry_punctuation_after['state'] = DISABLED
 
 
+def checkbutton_visible_command():
+
+    if checkbutton_visible_var.get() == 0:
+        checkbutton_visible_var.set(0)
+        checkbutton_visible.config(image=checkbutton_visible_image)
+        labelpass_invisible.grid_remove()
+        labelpass_visible.grid(column=1, row=0, sticky=W)
+    else:
+        checkbutton_visible_var.set(1)
+        checkbutton_visible.config(image=checkbutton_invisible_image)
+        labelpass_visible.grid_remove()
+        labelpass_invisible.grid(column=1, row=0, sticky=W)
+
+
+
 root = Tk()
 
 root.title('CSPG')
 root.geometry("495x250")
+#root.config(bg='black')
 
-cpass = StringVar(value="| ----------------- |") # generatepassword(length=32)
+cpass = StringVar(value="**click on the generate button**") # generatepassword(length=32)
 length_var = IntVar()
 
 style = ttk.Style()
@@ -106,15 +122,15 @@ for c in range(3): root.grid_rowconfigure(index=c, weight=1)
 
 # frame 0
 frame0 = ttk.Frame(root, borderwidth=2, relief='groove') #flat, groove, raised, ridge, solid, or sunken
-frame0.grid(column=0, row=0, sticky=NSEW, pady=3, padx=7, columnspan=2)
+frame0.grid(column=0, row=0, sticky=NSEW, pady=[6, 3], padx=6, columnspan=2)
 
-for c in range(1): frame0.grid_columnconfigure(index=c, weight=1)
+for c in range(2): frame0.grid_columnconfigure(index=c, weight=1)
 for c in range(1): frame0.grid_rowconfigure(index=c, weight=1)
 # frame 0
 
 # frame 1
 frame1 = ttk.Frame(root, borderwidth=2, relief='groove') #flat, groove, raised, ridge, solid, or sunken
-frame1.grid(column=0, row=1, sticky=NSEW, pady=3, padx=7)
+frame1.grid(column=0, row=1, sticky=NSEW, pady=3, padx=[6, 3])
 
 for c in range(2): frame1.grid_columnconfigure(index=c, weight=1)
 for c in range(2): frame1.grid_rowconfigure(index=c, weight=1)
@@ -122,7 +138,7 @@ for c in range(2): frame1.grid_rowconfigure(index=c, weight=1)
 
 # frame 2
 frame2 = ttk.Frame(root, borderwidth=2, relief='groove') #flat, groove, raised, ridge, solid, or sunken
-frame2.grid(column=0, row=2, sticky=NSEW, pady=3, padx=7, columnspan=2)
+frame2.grid(column=0, row=2, sticky=NSEW, pady=[3, 6], padx=6, columnspan=2)
 
 for c in range(2): frame2.grid_columnconfigure(index=c, weight=1)
 for c in range(4): frame2.grid_rowconfigure(index=c, weight=1)
@@ -130,14 +146,24 @@ for c in range(4): frame2.grid_rowconfigure(index=c, weight=1)
 
 # frame 3
 frame3 = ttk.Frame(root, borderwidth=2, relief='groove') #flat, groove, raised, ridge, solid, or sunken
-frame3.grid(column=1, row=1, sticky=NSEW, pady=3, padx=7)
+frame3.grid(column=1, row=1, sticky=NSEW, pady=3, padx=[3, 6])
 
 for c in range(1): frame3.grid_columnconfigure(index=c, weight=1)
 for c in range(1): frame3.grid_rowconfigure(index=c, weight=1)
 # frame 3
 
-label = ttk.Label(frame0, textvariable=cpass, font=('Verdana', 12, 'normal'), background='Gainsboro')
-label.grid(column=0, row=0)
+checkbutton_visible_image = PhotoImage(file='icons/visible_20x20.png')
+checkbutton_invisible_image = PhotoImage(file='icons/invisible_20x20.png')
+
+checkbutton_visible_var = IntVar(value=0)
+checkbutton_visible = ttk.Checkbutton(frame0, style='M.TCheckbutton', variable=checkbutton_visible_var, image=checkbutton_visible_image, cursor='hand2', command=checkbutton_visible_command, takefocus=0)
+checkbutton_visible.grid(column=0, row=0, padx=8, sticky=W)
+
+labelpass_invisible = ttk.Label(frame0, text="•"*16, font=('Verdana', 11, 'normal'), background='Gainsboro')
+#labelpass_invisible.grid(column=1, row=0, sticky=W)
+
+labelpass_visible = ttk.Label(frame0, textvariable=cpass, font=('Verdana', 11, 'normal'), background='Gainsboro')
+labelpass_visible.grid(column=1, row=0, sticky=W)
 
 button_generate = ttk.Button(frame1, text='Generate', style="M.TButton", takefocus=0, command=generate, width=12, padding=3)
 button_generate.grid(column=0, row=0, rowspan=2)
@@ -150,6 +176,7 @@ label_length.grid(column=0, row=0)
 
 length_var.set(4)
 spinbox_length = ttk.Spinbox(frame3, from_=4, to=32, textvariable=length_var, wrap=True, state='readonly', width=2, font=('Consolas', 12))
+spinbox_length.set(16)
 spinbox_length.grid(column=1, row=0, padx=8)
 
 checkbutton_lowercase_var = IntVar(value=1)
@@ -186,7 +213,16 @@ entry_digits_after.grid(column=1, row=2, sticky=EW, padx=7, pady=5)
 entry_punctuation_after = ttk.Entry(frame2, textvariable=entry_punctuation_var, font=('Verdana', 10, 'normal'), takefocus=0, justify=CENTER)
 entry_punctuation_after.grid(column=1, row=3, sticky=EW, padx=7, pady=5)
 
-root.attributes('-topmost', True)
+
+def finish():
+    root.clipboard_clear()
+    root.update()
+    root.destroy()
+
+
+root.protocol("WM_DELETE_WINDOW", finish)
+
 root.attributes('-toolwindow', True)
+root.attributes('-topmost', True)
 root.resizable(False, False)
 root.mainloop()
