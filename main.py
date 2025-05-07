@@ -1,4 +1,4 @@
-from secrets import choice
+import secrets
 from string import ascii_lowercase, ascii_uppercase, digits, punctuation
 from tkinter import *
 from tkinter import ttk
@@ -9,6 +9,8 @@ lowercase = list(ascii_lowercase)
 uppercase = list(ascii_uppercase)
 digitsa = list(digits)
 punctuationa = list(punctuation)
+
+csprng = secrets.SystemRandom()
 
 
 def generatepassword(length=11, l=True, u=True, d=True, p=True, ludp=None):
@@ -29,14 +31,16 @@ def generatepassword(length=11, l=True, u=True, d=True, p=True, ludp=None):
         rstruct.clear()
 
         for i in range(0, length):
-            rstruct.append(choice(struct_list))
+            rstruct.append(csprng.choice(struct_list))
+
+    csprng.shuffle(rstruct)
 
     for i in range(0, len(rstruct)):
         match rstruct[i]:
-            case 'l': passwd += choice(ludp[0])
-            case 'u': passwd += choice(ludp[1])
-            case 'd': passwd += choice(ludp[2])
-            case 'p': passwd += choice(ludp[3])
+            case 'l': passwd += csprng.choice(ludp[0])
+            case 'u': passwd += csprng.choice(ludp[1])
+            case 'd': passwd += csprng.choice(ludp[2])
+            case 'p': passwd += csprng.choice(ludp[3])
 
     return passwd
 
