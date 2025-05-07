@@ -2,6 +2,8 @@
 
 CSPG - (
 
+<img src="screenshot.png"></img>
+
 <table border=0 align='left' style='text-align: center;' cellspacing="0", cellpadding="5">
   <thead>
     <tr>
