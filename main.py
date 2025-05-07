@@ -186,6 +186,7 @@ entry_digits_after.grid(column=1, row=2, sticky=EW, padx=7, pady=5)
 entry_punctuation_after = ttk.Entry(frame2, textvariable=entry_punctuation_var, font=('Verdana', 10, 'normal'), takefocus=0, justify=CENTER)
 entry_punctuation_after.grid(column=1, row=3, sticky=EW, padx=7, pady=5)
 
+root.attributes('-topmost', True)
 root.attributes('-toolwindow', True)
 root.resizable(False, False)
 root.mainloop()
