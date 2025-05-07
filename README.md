@@ -1,4 +1,4 @@
-# About program
+## About
 
 SimplePG - Simple and convenient password generator using a cryptographically strong random number generator.
 
