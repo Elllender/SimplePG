@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import showinfo
 from pyperclip import copy
-
+#1
 lowercase = list(ascii_lowercase)
 uppercase = list(ascii_uppercase)
 digitsa = list(digits)
